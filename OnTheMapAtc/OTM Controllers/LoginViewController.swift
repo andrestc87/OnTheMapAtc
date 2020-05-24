@@ -28,7 +28,6 @@ class LoginViewController: UIViewController {
     @IBAction func signUpTapped(_ sender: Any) {
         let url = OTMClient.EndPoints.signUp.url
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        
     }
     
     func handleLoginResponse(success:Bool, error: Error?) {

@@ -10,6 +10,8 @@ import UIKit
 
 class MapViewController: OnTheMapViewController {
     
+    let test: String = "Test"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
