@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F892BEE247C50C900C0397B /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F892BED247C50C900C0397B /* StudentLocations.swift */; };
+		4F892BF0247C82A700C0397B /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F892BEF247C82A700C0397B /* LocationTableViewCell.swift */; };
 		4FCB72E8247AE05E00320AC0 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCB72E7247AE05E00320AC0 /* Account.swift */; };
 		4FCB72EA247AE06E00320AC0 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCB72E9247AE06E00320AC0 /* Session.swift */; };
 		4FCB72EC247AE27800320AC0 /* PostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCB72EB247AE27800320AC0 /* PostSession.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F892BED247C50C900C0397B /* StudentLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
+		4F892BEF247C82A700C0397B /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		4FCB72E7247AE05E00320AC0 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		4FCB72E9247AE06E00320AC0 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		4FCB72EB247AE27800320AC0 /* PostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSession.swift; sourceTree = "<group>"; };
@@ -66,6 +70,7 @@
 				4FCB72E9247AE06E00320AC0 /* Session.swift */,
 				4FCB72EB247AE27800320AC0 /* PostSession.swift */,
 				4FCB72F3247AFE8C00320AC0 /* OTMResponse.swift */,
+				4F892BED247C50C900C0397B /* StudentLocations.swift */,
 			);
 			path = "OTM Responses";
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			children = (
 				4FEFDB592478C3C9003AFFF1 /* LoginButton.swift */,
 				4FEFDB5B2478C3DB003AFFF1 /* LoginTextField.swift */,
+				4F892BEF247C82A700C0397B /* LocationTableViewCell.swift */,
 			);
 			path = "OTM Views";
 			sourceTree = "<group>";
@@ -221,9 +227,11 @@
 			files = (
 				4FEFDB612478D62B003AFFF1 /* OnTheMapViewController.swift in Sources */,
 				4FCB72F2247AE9FF00320AC0 /* LoginRequest.swift in Sources */,
+				4F892BF0247C82A700C0397B /* LocationTableViewCell.swift in Sources */,
 				4FCB72EF247AE5ED00320AC0 /* OTMClient.swift in Sources */,
 				4FEFDB5F2478D278003AFFF1 /* LoginViewController.swift in Sources */,
 				4FCB72EA247AE06E00320AC0 /* Session.swift in Sources */,
+				4F892BEE247C50C900C0397B /* StudentLocations.swift in Sources */,
 				4FEFDB5A2478C3C9003AFFF1 /* LoginButton.swift in Sources */,
 				4FEFDB652478D684003AFFF1 /* TableViewController.swift in Sources */,
 				4FCB72EC247AE27800320AC0 /* PostSession.swift in Sources */,

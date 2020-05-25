@@ -9,10 +9,23 @@
 import UIKit
 
 class OnTheMapViewController: UIViewController {
-
+    
+    var studentLocations = [StudentLocation]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getStudentLocations()
+        
+    }
+    
+    func getStudentLocations() {
+        OTMClient.getStudentLocations { (locations, error) in
+            self.studentLocations = locations ?? []
+        }
     }
     
     func logOut() {
