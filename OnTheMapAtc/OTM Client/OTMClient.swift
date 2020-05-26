@@ -49,7 +49,7 @@ class OTMClient {
         }
     }
     
-    class func getStudentLocations(limit: Int = 100, skip: Int = 0, completion: @escaping ([StudentLocation]?, Error?) -> Void) {
+    class func getStudentLocations(limit: Int, skip: Int, completion: @escaping ([StudentLocation]?, Error?) -> Void) {
         let getLocationsUrl = EndPoints.getLocations(limit, skip).url
         taskForGETRequest(url: getLocationsUrl, response: StudentLocations.self) { (response, error) in
                 if let response = response {

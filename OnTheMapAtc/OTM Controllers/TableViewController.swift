@@ -17,7 +17,7 @@ class TableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 50
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,19 +27,19 @@ class TableViewController: UIViewController {
     }
     
     func getStudentLocations() {
-        OTMClient.getStudentLocations { (locations, error) in
+        OTMClient.getStudentLocations(limit: 100, skip: 0) { (locations, error) in
             self.locations = locations ?? []
             self.tableView.reloadData()
         }
     }
     
     @IBAction func logout(_ sender: Any) {
-        //super.logOut()
+    //super.logOut()
     }
     
     
     @IBAction func refreshRecords(_ sender: Any) {
-        //super.refreshRecords()
+        getStudentLocations()
     }
     
     
@@ -70,8 +70,13 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
         cell.mediaUrlLabel.text = location.mediaURL
         cell.imageView?.image = UIImage(named: "icon_pin")
         
+        cell.contentView.setNeedsLayout()
+        cell.contentView.layoutIfNeeded()
+        
         return cell
     }
     
-    
+    private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }

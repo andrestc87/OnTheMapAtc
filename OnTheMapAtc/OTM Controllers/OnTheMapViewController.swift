@@ -23,9 +23,11 @@ class OnTheMapViewController: UIViewController {
     }
     
     func getStudentLocations() {
+        /*
         OTMClient.getStudentLocations { (locations, error) in
             self.studentLocations = locations ?? []
         }
+         */
     }
     
     func logOut() {
