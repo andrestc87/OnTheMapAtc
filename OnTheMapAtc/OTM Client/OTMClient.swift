@@ -12,14 +12,21 @@ class OTMClient {
     
     enum EndPoints {
         static let base = "https://onthemap-api.udacity.com/v1"
+        static let udacitySignUpUrl = "https://auth.udacity.com/sign-up?next=https://classroom.udacity.com/authenticated"
+        static let studentLocationsBaseUrl = "https://onthemap-api.udacity.com/v1/StudentLocation"
         
         case login
         case signUp
+        case getLocations(Int, Int)
         
         var stringValue: String {
             switch self {
-                case .login: return EndPoints.base + "/session"
-                case .signUp: return "https://auth.udacity.com/sign-up?next=https://classroom.udacity.com/authenticated"
+                case .login:
+                    return EndPoints.base + "/session"
+                case .signUp:
+                    return EndPoints.udacitySignUpUrl
+                case .getLocations(let limit, let skip):
+                    return EndPoints.studentLocationsBaseUrl + "?limit=\(limit)&skip=\(skip)&order=-updatedAt"
             }
         }
         
@@ -40,6 +47,50 @@ class OTMClient {
                 completion(false, error)
             }
         }
+    }
+    
+    class func getStudentLocations(limit: Int, skip: Int, completion: @escaping ([StudentLocation]?, Error?) -> Void) {
+        let getLocationsUrl = EndPoints.getLocations(limit, skip).url
+        taskForGETRequest(url: getLocationsUrl, response: StudentLocations.self) { (response, error) in
+                if let response = response {
+                    completion(response.results, nil)
+                } else {
+                    completion([], error)
+                }
+        }
+    }
+    
+    @discardableResult class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping(ResponseType?, Error?) -> Void)  -> URLSessionTask{
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                do {
+                    let errorResponse = try decoder.decode(OTMResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
+            }
+            
+        }
+            task.resume()
+        
+        return task
     }
     
     class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping(ResponseType?, Error?) -> Void) {

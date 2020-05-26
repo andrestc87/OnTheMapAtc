@@ -8,7 +8,9 @@
 
 import UIKit
 
-class MapViewController: OnTheMapViewController {
+class MapViewController: UIViewController {
+    
+    let test: String = "Test"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,17 +18,17 @@ class MapViewController: OnTheMapViewController {
     }
     
     @IBAction func logout(_ sender: Any) {
-        super.logOut()
+        //super.logOut()
     }
     
     
     @IBAction func refreshRecords(_ sender: Any) {
-        super.refreshRecords()
+        //super.refreshRecords()
     }
     
     
     @IBAction func addPin(_ sender: Any) {
-        super.addPin()
+        //super.addPin()
     }
     
 }
