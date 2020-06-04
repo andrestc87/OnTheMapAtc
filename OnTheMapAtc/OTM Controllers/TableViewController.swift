@@ -18,7 +18,7 @@ class TableViewController: UIViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
-    }
+     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -30,6 +30,7 @@ class TableViewController: UIViewController {
         OTMClient.getStudentLocations(limit: 100, skip: 0) { (locations, error) in
             self.locations = locations ?? []
             self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
         }
     }
     
