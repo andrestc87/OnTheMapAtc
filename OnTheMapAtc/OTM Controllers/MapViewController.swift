@@ -44,7 +44,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     
     @IBAction func addPin(_ sender: Any) {
-        //super.addPin()
+        performSegue(withIdentifier: "showLocationForm", sender: nil)
     }
     
     func getStudentLocations() {
