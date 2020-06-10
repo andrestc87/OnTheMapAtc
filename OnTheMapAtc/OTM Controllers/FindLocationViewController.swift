@@ -23,7 +23,15 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func saveLocation(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
+        OTMClient.getUserData { (data, error) in
+            print("GETTING USER DATA")
+            print(OTMClient.Auth.firstName)
+            print(OTMClient.Auth.lastName)
+            print(OTMClient.Auth.uniqueKey)
+            
+            // Verify if the object ID is empty, if it is post if not put
+        }
     }
     
     func setPinForLocation() {

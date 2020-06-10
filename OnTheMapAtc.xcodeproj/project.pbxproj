@@ -11,6 +11,7 @@
 		4F892BF0247C82A700C0397B /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F892BEF247C82A700C0397B /* LocationTableViewCell.swift */; };
 		4FA5DB92248D8F5C00CBFE60 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5DB91248D8F5C00CBFE60 /* AddLocationViewController.swift */; };
 		4FA5DB94248D94F200CBFE60 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5DB93248D94F200CBFE60 /* FindLocationViewController.swift */; };
+		4FB3713D2490817D00C69402 /* StudentDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB3713C2490817D00C69402 /* StudentDataResponse.swift */; };
 		4FCB72E8247AE05E00320AC0 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCB72E7247AE05E00320AC0 /* Account.swift */; };
 		4FCB72EA247AE06E00320AC0 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCB72E9247AE06E00320AC0 /* Session.swift */; };
 		4FCB72EC247AE27800320AC0 /* PostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCB72EB247AE27800320AC0 /* PostSession.swift */; };
@@ -35,6 +36,7 @@
 		4F892BEF247C82A700C0397B /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		4FA5DB91248D8F5C00CBFE60 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		4FA5DB93248D94F200CBFE60 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
+		4FB3713C2490817D00C69402 /* StudentDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDataResponse.swift; sourceTree = "<group>"; };
 		4FCB72E7247AE05E00320AC0 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		4FCB72E9247AE06E00320AC0 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		4FCB72EB247AE27800320AC0 /* PostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSession.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				4FCB72EB247AE27800320AC0 /* PostSession.swift */,
 				4FCB72F3247AFE8C00320AC0 /* OTMResponse.swift */,
 				4F892BED247C50C900C0397B /* StudentLocations.swift */,
+				4FB3713C2490817D00C69402 /* StudentDataResponse.swift */,
 			);
 			path = "OTM Responses";
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				4F892BEE247C50C900C0397B /* StudentLocations.swift in Sources */,
 				4FEFDB5A2478C3C9003AFFF1 /* LoginButton.swift in Sources */,
 				4FEFDB652478D684003AFFF1 /* TableViewController.swift in Sources */,
+				4FB3713D2490817D00C69402 /* StudentDataResponse.swift in Sources */,
 				4FCB72EC247AE27800320AC0 /* PostSession.swift in Sources */,
 				4FEFDB442478B31B003AFFF1 /* AppDelegate.swift in Sources */,
 				4FEFDB462478B31B003AFFF1 /* SceneDelegate.swift in Sources */,
