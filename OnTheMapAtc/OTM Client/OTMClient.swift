@@ -10,14 +10,24 @@ import Foundation
 
 class OTMClient {
     
+    struct Auth {
+        static var accountKey = ""
+        static var firstName = ""
+        static var lastName = ""
+        static var uniqueKey = ""
+        static var objectid = ""
+    }
+    
     enum EndPoints {
         static let base = "https://onthemap-api.udacity.com/v1"
         static let udacitySignUpUrl = "https://auth.udacity.com/sign-up?next=https://classroom.udacity.com/authenticated"
         static let studentLocationsBaseUrl = "https://onthemap-api.udacity.com/v1/StudentLocation"
+        static let userDataURL = "https://onthemap-api.udacity.com/v1/users"
         
         case login
         case signUp
         case getLocations(Int, Int)
+        case getUserData(String)
         
         var stringValue: String {
             switch self {
@@ -27,6 +37,8 @@ class OTMClient {
                     return EndPoints.udacitySignUpUrl
                 case .getLocations(let limit, let skip):
                     return EndPoints.studentLocationsBaseUrl + "?limit=\(limit)&skip=\(skip)&order=-updatedAt"
+            case .getUserData(let userId):
+                return EndPoints.userDataURL + "/\(userId)"
             }
         }
         
@@ -41,7 +53,7 @@ class OTMClient {
         
         taskForPOSTRequest(url: EndPoints.login.url, responseType: PostSession.self, body: loginBody) { (response, error) in
             if let response = response {
-                //Auth.requestToken = response.requestToken
+                Auth.accountKey = response.account.key
                 completion(true, nil)
             } else {
                 completion(false, error)
@@ -60,6 +72,59 @@ class OTMClient {
         }
     }
     
+    class func getUserData(completion: @escaping (Bool, Error?) -> Void) {
+        let getUserDataUrl = EndPoints.getUserData(Auth.accountKey).url
+        taskForSpecificGETRequest(url: getUserDataUrl, response: StudentDataResponse.self) { (response, error) in
+                if let response = response {
+                    Auth.firstName = response.firstName ?? "No First Name"
+                    Auth.lastName = response.lastName ?? "No Last Name"
+                    Auth.uniqueKey = response.uniqueKey ?? ""
+                    completion(true, nil)
+                } else {
+                    completion(false, error)
+                }
+        }
+        
+    }
+    
+    @discardableResult class func taskForSpecificGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping(ResponseType?, Error?) -> Void)  -> URLSessionTask{
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            let range = (5..<data.count)
+            let newData = data.subdata(in: range) /* subset response data! */
+            print(String(data: newData, encoding: .utf8)!)
+            
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: newData)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                do {
+                    let errorResponse = try decoder.decode(OTMResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
+            }
+            
+        }
+            task.resume()
+        
+        return task
+    }
+    
     @discardableResult class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping(ResponseType?, Error?) -> Void)  -> URLSessionTask{
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
@@ -68,6 +133,7 @@ class OTMClient {
                 }
                 return
             }
+            
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(ResponseType.self, from: data)
@@ -136,4 +202,5 @@ class OTMClient {
         task.resume()
     }
 }
+
 
