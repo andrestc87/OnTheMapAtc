@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4F892BEE247C50C900C0397B /* StudentLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F892BED247C50C900C0397B /* StudentLocations.swift */; };
 		4F892BF0247C82A700C0397B /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F892BEF247C82A700C0397B /* LocationTableViewCell.swift */; };
+		4F913E982494633E004007A6 /* PostStudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F913E972494633E004007A6 /* PostStudentLocationResponse.swift */; };
+		4F913E9A24946354004007A6 /* PutStudentLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F913E9924946354004007A6 /* PutStudentLocationResponse.swift */; };
+		4F913E9C24946FC4004007A6 /* StudentLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F913E9B24946FC4004007A6 /* StudentLocationRequest.swift */; };
 		4FA5DB92248D8F5C00CBFE60 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5DB91248D8F5C00CBFE60 /* AddLocationViewController.swift */; };
 		4FA5DB94248D94F200CBFE60 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA5DB93248D94F200CBFE60 /* FindLocationViewController.swift */; };
 		4FB3713D2490817D00C69402 /* StudentDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB3713C2490817D00C69402 /* StudentDataResponse.swift */; };
@@ -34,6 +37,9 @@
 /* Begin PBXFileReference section */
 		4F892BED247C50C900C0397B /* StudentLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocations.swift; sourceTree = "<group>"; };
 		4F892BEF247C82A700C0397B /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		4F913E972494633E004007A6 /* PostStudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStudentLocationResponse.swift; sourceTree = "<group>"; };
+		4F913E9924946354004007A6 /* PutStudentLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutStudentLocationResponse.swift; sourceTree = "<group>"; };
+		4F913E9B24946FC4004007A6 /* StudentLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationRequest.swift; sourceTree = "<group>"; };
 		4FA5DB91248D8F5C00CBFE60 /* AddLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		4FA5DB93248D94F200CBFE60 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
 		4FB3713C2490817D00C69402 /* StudentDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentDataResponse.swift; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 				4FCB72F3247AFE8C00320AC0 /* OTMResponse.swift */,
 				4F892BED247C50C900C0397B /* StudentLocations.swift */,
 				4FB3713C2490817D00C69402 /* StudentDataResponse.swift */,
+				4F913E972494633E004007A6 /* PostStudentLocationResponse.swift */,
+				4F913E9924946354004007A6 /* PutStudentLocationResponse.swift */,
 			);
 			path = "OTM Responses";
 			sourceTree = "<group>";
@@ -94,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				4FCB72F1247AE9FF00320AC0 /* LoginRequest.swift */,
+				4F913E9B24946FC4004007A6 /* StudentLocationRequest.swift */,
 			);
 			path = "OTM Requests";
 			sourceTree = "<group>";
@@ -236,10 +245,13 @@
 			files = (
 				4FEFDB612478D62B003AFFF1 /* OnTheMapViewController.swift in Sources */,
 				4FCB72F2247AE9FF00320AC0 /* LoginRequest.swift in Sources */,
+				4F913E9C24946FC4004007A6 /* StudentLocationRequest.swift in Sources */,
 				4F892BF0247C82A700C0397B /* LocationTableViewCell.swift in Sources */,
+				4F913E982494633E004007A6 /* PostStudentLocationResponse.swift in Sources */,
 				4FCB72EF247AE5ED00320AC0 /* OTMClient.swift in Sources */,
 				4FEFDB5F2478D278003AFFF1 /* LoginViewController.swift in Sources */,
 				4FCB72EA247AE06E00320AC0 /* Session.swift in Sources */,
+				4F913E9A24946354004007A6 /* PutStudentLocationResponse.swift in Sources */,
 				4F892BEE247C50C900C0397B /* StudentLocations.swift in Sources */,
 				4FEFDB5A2478C3C9003AFFF1 /* LoginButton.swift in Sources */,
 				4FEFDB652478D684003AFFF1 /* TableViewController.swift in Sources */,

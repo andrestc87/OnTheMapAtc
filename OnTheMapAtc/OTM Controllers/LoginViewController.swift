@@ -32,6 +32,8 @@ class LoginViewController: UIViewController {
     
     func handleLoginResponse(success:Bool, error: Error?) {
         if success {
+            self.emailTextField.text = ""
+            self.passwordTextField.text = ""
             self.performSegue(withIdentifier: "completeLogin", sender: nil)
         } else {
             showLoginFailure(message: error?.localizedDescription ?? "")

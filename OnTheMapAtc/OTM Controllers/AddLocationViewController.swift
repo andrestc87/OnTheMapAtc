@@ -29,11 +29,12 @@ class AddLocationViewController: UIViewController {
         guard let destinationVC = segue.destination as? FindLocationViewController else { return }
         destinationVC.locationPlaceMark = self.locationPlaceMark
         destinationVC.locationDescription = self.locationTextField.text
+        destinationVC.studentUrl = self.linkTextField.text
     }
     
     @IBAction func navigateToFindLocation(_ sender: Any) {
-        if locationTextField.text?.count == 0 {
-            showAlertMessage(message: "Insert location.")
+        if locationTextField.text?.count == 0 || linkTextField.text?.count == 0 {
+            showAlertMessage(message: "Please, insert a location and a link.")
         } else {
             CLGeocoder().geocodeAddressString(locationTextField.text!){ (placemark, error) in
                 guard error == nil else {

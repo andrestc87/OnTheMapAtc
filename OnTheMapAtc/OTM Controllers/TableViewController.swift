@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class TableViewController: UIViewController {
     
@@ -30,22 +31,35 @@ class TableViewController: UIViewController {
         OTMClient.getStudentLocations(limit: 100, skip: 0) { (locations, error) in
             self.locations = locations ?? []
             self.tableView.reloadData()
-            self.tableView.refreshControl?.endRefreshing()
         }
     }
     
     @IBAction func logout(_ sender: Any) {
-    //super.logOut()
+        OTMClient.logout { (success, error) in
+            if success {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                self.showAlertMessage(message: "An error occurred logging out.")
+            }
+        }
     }
     
-    
-    @IBAction func refreshRecords(_ sender: Any) {
-        getStudentLocations()
+    @IBAction func refreshTable(_ sender: Any) {
+        self.getStudentLocations()
     }
     
     
     @IBAction func addPin(_ sender: Any) {
-        //super.addPin()
+        performSegue(withIdentifier: "showLocationForm", sender: nil)
+    }
+    
+    func showAlertMessage(message: String) {
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.present(alertVC, animated: true, completion: nil)
     }
 }
 
@@ -79,5 +93,20 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     
     private func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let location = self.locations[indexPath.row]
+        if let mediaUrl = location.mediaURL {
+            guard let url = URL(string: mediaUrl) else { return }
+            if url.absoluteString.contains("https://") {
+                let webViewController = SFSafariViewController(url: url)
+                self.present(webViewController, animated: true, completion: nil)
+            } else {
+                self.showAlertMessage(message: "The URL is not valid. Please review.")
+            }
+        } else {
+            self.showAlertMessage(message: "The selected student have not set a url.")
+        }
     }
 }
