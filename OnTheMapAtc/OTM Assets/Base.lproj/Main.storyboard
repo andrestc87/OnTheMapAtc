@@ -36,7 +36,7 @@
                                     <constraint firstAttribute="height" constant="50" id="KLI-B0-GQj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g21-iU-0VO" userLabel="loginButton" customClass="LoginButton" customModule="OnTheMapAtc" customModuleProvider="target">
                                 <rect key="frame" x="20" y="380" width="335" height="50"/>
@@ -114,18 +114,18 @@
                                     <navigationItem title="On the Map" id="Onh-hW-l62">
                                         <barButtonItem key="leftBarButtonItem" title="Logout" id="vC2-Iu-tsA">
                                             <connections>
-                                                <action selector="logout:" destination="Yl6-O0-QF4" id="TGR-43-esa"/>
+                                                <action selector="logout:" destination="Yl6-O0-QF4" id="mcY-yj-Olg"/>
                                             </connections>
                                         </barButtonItem>
                                         <rightBarButtonItems>
                                             <barButtonItem systemItem="add" id="wxv-VR-4oo">
                                                 <connections>
-                                                    <action selector="addPin:" destination="Yl6-O0-QF4" id="UoW-cR-5Ik"/>
+                                                    <action selector="addPin:" destination="Yl6-O0-QF4" id="Qlw-nQ-0Q0"/>
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem systemItem="refresh" id="XSv-kR-Zvc">
                                                 <connections>
-                                                    <action selector="refreshRecords:" destination="Yl6-O0-QF4" id="GcY-4J-9qk"/>
+                                                    <action selector="refreshTable:" destination="Yl6-O0-QF4" id="hxp-ay-8wt"/>
                                                 </connections>
                                             </barButtonItem>
                                         </rightBarButtonItems>
@@ -439,7 +439,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sAZ-eX-AZA"/>
+        <segue reference="dN8-eq-3NW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_listview-deselected" width="75" height="50"/>

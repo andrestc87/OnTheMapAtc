@@ -34,9 +34,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logout(_ sender: Any) {
-        //super.logOut()
+        OTMClient.logout { (success, error) in
+            if success {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                self.showAlertMessage(message: "An error occurred logging out.")
+            }
+        }
     }
-    
     
     @IBAction func refreshRecords(_ sender: Any) {
         self.getStudentLocations()
@@ -88,6 +95,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.setRegion(coordinateRegion, animated: true)
     }
     
+    func showAlertMessage(message: String) {
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
     //MapView Delegate
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationId = "annotationPin"
@@ -112,9 +126,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     let webViewController = SFSafariViewController(url: url)
                     self.present(webViewController, animated: true, completion: nil)
                 } else {
-                    let alert = UIAlertController(title: "Error", message: "The URL is not valid. Please review.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
+                    self.showAlertMessage(message: "The URL is not valid. Please review.")
                 }
             }
         }
