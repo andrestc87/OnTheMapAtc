@@ -11,9 +11,11 @@ import Foundation
 
 class LoginViewController: UIViewController {
     
-    
     @IBOutlet weak var emailTextField: LoginTextField!
     @IBOutlet weak var passwordTextField: LoginTextField!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var logInButton: LoginButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +23,9 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: Any) {
+        setLoggingIn(true)
         OTMClient.login(username: self.emailTextField.text ?? "", password: self.passwordTextField.text ?? "", completion: handleLoginResponse(success:error:))
     }
-    
     
     @IBAction func signUpTapped(_ sender: Any) {
         let url = OTMClient.EndPoints.signUp.url
@@ -31,6 +33,7 @@ class LoginViewController: UIViewController {
     }
     
     func handleLoginResponse(success:Bool, error: Error?) {
+        setLoggingIn(false)
         if success {
             self.emailTextField.text = ""
             self.passwordTextField.text = ""
@@ -38,12 +41,23 @@ class LoginViewController: UIViewController {
         } else {
             showLoginFailure(message: error?.localizedDescription ?? "")
         }
-        
     }
     
     func showLoginFailure(message: String) {
         let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         show(alertVC, sender: nil)
+    }
+    
+    func setLoggingIn(_ loggingIn: Bool) {
+        if loggingIn {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        emailTextField.isEnabled = !loggingIn
+        passwordTextField.isEnabled = !loggingIn
+        logInButton.isEnabled = !loggingIn
+        signUpButton.isEnabled = !loggingIn
     }
 }

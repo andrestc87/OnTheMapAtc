@@ -36,7 +36,6 @@ class OTMClient {
         case updateStudentLocation(String)
         case saveStudentLocation
         
-        
         var stringValue: String {
             switch self {
                 case .login:
@@ -123,7 +122,6 @@ class OTMClient {
                     completion(false, error)
                 }
         }
-        
     }
     
     class func saveStudentLocation(completion: @escaping (Bool, Error?) -> Void) {
@@ -188,9 +186,9 @@ class OTMClient {
                     }
                 }
             }
-            
         }
-            task.resume()
+        
+        task.resume()
         
         return task
     }
@@ -243,7 +241,6 @@ class OTMClient {
     class func taskForPUTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping(ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
-        //request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try! JSONEncoder().encode(body)
         

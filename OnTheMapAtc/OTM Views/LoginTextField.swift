@@ -12,9 +12,7 @@ class LoginTextField: UITextField {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         layer.cornerRadius = 5
-        
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {

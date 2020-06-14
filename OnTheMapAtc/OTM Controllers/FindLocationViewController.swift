@@ -12,6 +12,8 @@ import MapKit
 class FindLocationViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var saveLocationButton: LoginButton!
     
     var locationPlaceMark: CLPlacemark!
     var locationDescription: String!
@@ -24,6 +26,7 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func saveLocation(_ sender: Any) {
+        self.setLoggingIn(true)
         OTMClient.getStudentData { (succes, error) in
             // The uniqueKey, firstName and lastName are already set on OTMClient.Auth object
             // Now we add the other values so we have all the parameters needed
@@ -41,6 +44,7 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
                 }
             } else {
                 self.showAlertMessage(message: "The Student Data was not found.")
+                self.setLoggingIn(false)
             }
         }
     }
@@ -48,10 +52,12 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     func saveStudentLocation() {
         OTMClient.saveStudentLocation { (success, error) in
             if success {
+                self.setLoggingIn(false)
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
+                self.setLoggingIn(false)
                 OTMClient.Auth.objectid = ""
                 self.showAlertMessage(message: "Error saving the student location. Please try again")
             }
@@ -61,10 +67,12 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
     func updateStudenLocation() {
         OTMClient.updateStudentLocation { (success, error) in
             if success {
-                  DispatchQueue.main.async {
-                      self.dismiss(animated: true, completion: nil)
-                  }
+                DispatchQueue.main.async {
+                    self.setLoggingIn(false)
+                    self.dismiss(animated: true, completion: nil)
+                }
             } else {
+                self.setLoggingIn(false)
                 self.showAlertMessage(message: "Error upating the student location. Please try again.")
             }
         }
@@ -103,5 +111,14 @@ class FindLocationViewController: UIViewController, MKMapViewDelegate {
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    func setLoggingIn(_ loggingIn: Bool) {
+        if loggingIn {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        saveLocationButton.isEnabled = !loggingIn
     }
 }

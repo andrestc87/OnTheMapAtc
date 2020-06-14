@@ -67,6 +67,9 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="NIe-ZS-OW6" userLabel="activityIndicator">
+                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -78,18 +81,23 @@
                             <constraint firstItem="TEu-0K-Nhq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ko9-l0-Wyq"/>
                             <constraint firstItem="g21-iU-0VO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Lp6-Uq-BfY"/>
                             <constraint firstItem="Jw2-u9-FSM" firstAttribute="top" secondItem="TEu-0K-Nhq" secondAttribute="bottom" constant="60" id="P4y-qD-9GA"/>
+                            <constraint firstItem="NIe-ZS-OW6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Sn9-zi-pR4"/>
                             <constraint firstItem="Jcb-2H-njP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TDo-Tq-l95"/>
                             <constraint firstItem="Jcb-2H-njP" firstAttribute="top" secondItem="g21-iU-0VO" secondAttribute="bottom" constant="20" id="U9r-YH-dVH"/>
                             <constraint firstItem="Jw2-u9-FSM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="d4O-rr-4wZ"/>
                             <constraint firstItem="g21-iU-0VO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="hRn-Tq-VuD"/>
+                            <constraint firstItem="NIe-ZS-OW6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="uUh-Y3-XS9"/>
                             <constraint firstItem="dzw-Cm-W0E" firstAttribute="top" secondItem="Jw2-u9-FSM" secondAttribute="bottom" constant="20" id="wMq-TR-waf"/>
                             <constraint firstItem="g21-iU-0VO" firstAttribute="top" secondItem="dzw-Cm-W0E" secondAttribute="bottom" constant="20" id="xK0-qp-P7D"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="NIe-ZS-OW6" id="IBV-fw-oHE"/>
                         <outlet property="emailTextField" destination="Jw2-u9-FSM" id="bqa-7f-nDD"/>
+                        <outlet property="logInButton" destination="g21-iU-0VO" id="8VU-4i-BZ2"/>
                         <outlet property="passwordTextField" destination="dzw-Cm-W0E" id="2pp-CU-uhg"/>
+                        <outlet property="signUpButton" destination="xaP-YG-nhg" id="bTF-ln-0b2"/>
                         <segue destination="qe7-0r-zmk" kind="presentation" identifier="completeLogin" id="AfO-eC-TRZ"/>
                     </connections>
                 </viewController>
@@ -189,21 +197,27 @@
                                     <outlet property="delegate" destination="Yl6-O0-QF4" id="tOL-kP-0Qi"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="g5U-Xh-a1p" userLabel="activityIndicator">
+                                <rect key="frame" x="177.5" y="313.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="kFo-mH-dpb" firstAttribute="bottom" secondItem="c56-Je-Sw5" secondAttribute="bottom" id="9bS-Zq-VHn"/>
                             <constraint firstItem="kFo-mH-dpb" firstAttribute="top" secondItem="V6U-HJ-sft" secondAttribute="bottom" id="ClP-Qj-BKf"/>
                             <constraint firstItem="kFo-mH-dpb" firstAttribute="trailing" secondItem="c56-Je-Sw5" secondAttribute="trailing" id="Hd4-XB-HNw"/>
+                            <constraint firstItem="g5U-Xh-a1p" firstAttribute="centerX" secondItem="7Uu-Jj-ix2" secondAttribute="centerX" id="HgF-tS-vP4"/>
                             <constraint firstItem="V6U-HJ-sft" firstAttribute="leading" secondItem="c56-Je-Sw5" secondAttribute="leading" id="HlH-Hz-Abh"/>
                             <constraint firstItem="V6U-HJ-sft" firstAttribute="top" secondItem="c56-Je-Sw5" secondAttribute="top" id="OmU-Pw-0Gc"/>
                             <constraint firstItem="V6U-HJ-sft" firstAttribute="trailing" secondItem="c56-Je-Sw5" secondAttribute="trailing" id="aNt-qk-NFt"/>
+                            <constraint firstItem="g5U-Xh-a1p" firstAttribute="centerY" secondItem="7Uu-Jj-ix2" secondAttribute="centerY" id="ubq-Dj-lJt"/>
                             <constraint firstItem="kFo-mH-dpb" firstAttribute="leading" secondItem="c56-Je-Sw5" secondAttribute="leading" id="wLv-Ro-nWl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c56-Je-Sw5"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icon_listview-selected" selectedImage="icon_listview-deselected" id="F6y-js-aOf"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="g5U-Xh-a1p" id="gRa-aA-K00"/>
                         <outlet property="tableView" destination="kFo-mH-dpb" id="Vl7-6E-ku2"/>
                         <segue destination="kf6-v9-dD4" kind="show" identifier="showLocationForm" id="dN8-eq-3NW"/>
                     </connections>
@@ -250,21 +264,27 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="uUM-eb-xrc" userLabel="mapView">
                                 <rect key="frame" x="0.0" y="44" width="375" height="554"/>
                             </mapView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="90m-Sg-4qV" userLabel="activityIndicator">
+                                <rect key="frame" x="177.5" y="313.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="uUM-eb-xrc" firstAttribute="top" secondItem="lCO-zp-asP" secondAttribute="bottom" id="2Uu-RC-dc0"/>
+                            <constraint firstItem="90m-Sg-4qV" firstAttribute="centerY" secondItem="JeO-Nd-Grv" secondAttribute="centerY" id="3e3-u1-gy2"/>
                             <constraint firstItem="uUM-eb-xrc" firstAttribute="trailing" secondItem="twx-6g-VTt" secondAttribute="trailing" id="EBk-nB-lsn"/>
                             <constraint firstItem="uUM-eb-xrc" firstAttribute="bottom" secondItem="twx-6g-VTt" secondAttribute="bottom" id="EdS-2H-NUh"/>
                             <constraint firstItem="lCO-zp-asP" firstAttribute="trailing" secondItem="uUM-eb-xrc" secondAttribute="trailing" id="OQk-xt-pgS"/>
                             <constraint firstItem="lCO-zp-asP" firstAttribute="leading" secondItem="uUM-eb-xrc" secondAttribute="leading" id="aNd-wk-frT"/>
                             <constraint firstItem="lCO-zp-asP" firstAttribute="top" secondItem="twx-6g-VTt" secondAttribute="top" id="iQW-Cd-GXC"/>
+                            <constraint firstItem="90m-Sg-4qV" firstAttribute="centerX" secondItem="JeO-Nd-Grv" secondAttribute="centerX" id="l7R-Vo-RUE"/>
                             <constraint firstItem="uUM-eb-xrc" firstAttribute="leading" secondItem="twx-6g-VTt" secondAttribute="leading" id="xdn-Ae-UHA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="twx-6g-VTt"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="icon_mapview-selected" selectedImage="icon_mapview-deselected" id="cf0-6Q-ASl"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="90m-Sg-4qV" id="dJh-Zm-YMX"/>
                         <outlet property="addLocationButton" destination="khK-GJ-nET" id="uon-2K-wNN"/>
                         <outlet property="mapLogOutButton" destination="SL6-1b-Pu6" id="Rlk-wy-W87"/>
                         <outlet property="mapView" destination="uUM-eb-xrc" id="Mng-zQ-0un"/>
@@ -335,14 +355,19 @@
                                     <action selector="navigateToFindLocation:" destination="y0V-gt-iuE" eventType="touchUpInside" id="vPj-5Y-rn8"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="IZh-dC-m0j" userLabel="activityIndicator">
+                                <rect key="frame" x="177.5" y="313.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="IZh-dC-m0j" firstAttribute="centerY" secondItem="QsH-QD-982" secondAttribute="centerY" id="BZY-Hr-hk1"/>
                             <constraint firstItem="VkZ-yT-z7u" firstAttribute="leading" secondItem="AZK-bQ-KzI" secondAttribute="leading" constant="30" id="F8g-aj-uPt"/>
                             <constraint firstItem="AZK-bQ-KzI" firstAttribute="trailing" secondItem="VkZ-yT-z7u" secondAttribute="trailing" constant="30" id="HLu-oQ-yQa"/>
                             <constraint firstItem="Ofe-T5-vUy" firstAttribute="leading" secondItem="AZK-bQ-KzI" secondAttribute="leading" constant="30" id="HUc-AN-MvS"/>
                             <constraint firstItem="eGC-Wl-Zw2" firstAttribute="centerX" secondItem="QsH-QD-982" secondAttribute="centerX" id="Jf9-jJ-cjk"/>
                             <constraint firstItem="eGC-Wl-Zw2" firstAttribute="top" secondItem="AZK-bQ-KzI" secondAttribute="top" constant="60" id="LEo-bX-gzP"/>
+                            <constraint firstItem="IZh-dC-m0j" firstAttribute="centerX" secondItem="QsH-QD-982" secondAttribute="centerX" id="Og2-89-BuV"/>
                             <constraint firstItem="DDx-m0-zIp" firstAttribute="top" secondItem="eGC-Wl-Zw2" secondAttribute="bottom" constant="50" id="SMB-Zl-LVA"/>
                             <constraint firstItem="VkZ-yT-z7u" firstAttribute="top" secondItem="Ofe-T5-vUy" secondAttribute="bottom" constant="20" id="XVG-fh-dBy"/>
                             <constraint firstItem="DDx-m0-zIp" firstAttribute="leading" secondItem="AZK-bQ-KzI" secondAttribute="leading" constant="30" id="gnx-KM-hjN"/>
@@ -360,6 +385,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="IZh-dC-m0j" id="57k-sU-i4w"/>
+                        <outlet property="findLocationButton" destination="VkZ-yT-z7u" id="Tqz-BJ-81u"/>
                         <outlet property="linkTextField" destination="Ofe-T5-vUy" id="gzK-DO-HIk"/>
                         <outlet property="locationTextField" destination="DDx-m0-zIp" id="sz8-VT-k7m"/>
                         <segue destination="PPy-Mr-jCs" kind="show" identifier="showFindLocation" id="hgq-Gp-UIr"/>
@@ -395,22 +422,29 @@
                                     <action selector="setLocation:" destination="xk0-qc-haW" eventType="touchUpInside" id="4zb-pr-o3b"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="MH4-Di-sla" userLabel="activityindicator">
+                                <rect key="frame" x="177.5" y="313.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="C76-6f-Tv6" firstAttribute="trailing" secondItem="atl-o0-JmA" secondAttribute="trailing" constant="30" id="2iv-KB-rpY"/>
                             <constraint firstItem="2gg-xj-4Gv" firstAttribute="trailing" secondItem="C76-6f-Tv6" secondAttribute="trailing" id="86o-te-ZGh"/>
+                            <constraint firstItem="MH4-Di-sla" firstAttribute="centerX" secondItem="cpJ-wF-Zvc" secondAttribute="centerX" id="IFk-e3-9vt"/>
                             <constraint firstItem="2gg-xj-4Gv" firstAttribute="top" secondItem="C76-6f-Tv6" secondAttribute="top" id="YvN-Qm-fre"/>
                             <constraint firstItem="atl-o0-JmA" firstAttribute="leading" secondItem="C76-6f-Tv6" secondAttribute="leading" constant="30" id="djF-IB-eMh"/>
                             <constraint firstItem="2gg-xj-4Gv" firstAttribute="leading" secondItem="C76-6f-Tv6" secondAttribute="leading" id="eG8-qU-UEp"/>
                             <constraint firstItem="2gg-xj-4Gv" firstAttribute="bottom" secondItem="C76-6f-Tv6" secondAttribute="bottom" id="gde-nY-KOP"/>
                             <constraint firstItem="C76-6f-Tv6" firstAttribute="bottom" secondItem="atl-o0-JmA" secondAttribute="bottom" constant="30" id="lEZ-lN-nxC"/>
+                            <constraint firstItem="MH4-Di-sla" firstAttribute="centerY" secondItem="cpJ-wF-Zvc" secondAttribute="centerY" id="qil-uo-K7N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="C76-6f-Tv6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Find Location" id="80C-HG-A0l"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="MH4-Di-sla" id="EIz-tZ-ND4"/>
                         <outlet property="mapView" destination="2gg-xj-4Gv" id="lYo-1e-3nA"/>
+                        <outlet property="saveLocationButton" destination="atl-o0-JmA" id="Qk6-cz-8hv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w84-Ly-uut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -439,7 +473,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dN8-eq-3NW"/>
+        <segue reference="sAZ-eX-AZA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_listview-deselected" width="75" height="50"/>

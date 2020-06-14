@@ -29,7 +29,6 @@
 		4FEFDB5A2478C3C9003AFFF1 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEFDB592478C3C9003AFFF1 /* LoginButton.swift */; };
 		4FEFDB5C2478C3DB003AFFF1 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEFDB5B2478C3DB003AFFF1 /* LoginTextField.swift */; };
 		4FEFDB5F2478D278003AFFF1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEFDB5E2478D278003AFFF1 /* LoginViewController.swift */; };
-		4FEFDB612478D62B003AFFF1 /* OnTheMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEFDB602478D62B003AFFF1 /* OnTheMapViewController.swift */; };
 		4FEFDB632478D672003AFFF1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEFDB622478D672003AFFF1 /* MapViewController.swift */; };
 		4FEFDB652478D684003AFFF1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEFDB642478D684003AFFF1 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -59,7 +58,6 @@
 		4FEFDB592478C3C9003AFFF1 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		4FEFDB5B2478C3DB003AFFF1 /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		4FEFDB5E2478D278003AFFF1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4FEFDB602478D62B003AFFF1 /* OnTheMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTheMapViewController.swift; sourceTree = "<group>"; };
 		4FEFDB622478D672003AFFF1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4FEFDB642478D684003AFFF1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				4FEFDB5E2478D278003AFFF1 /* LoginViewController.swift */,
-				4FEFDB602478D62B003AFFF1 /* OnTheMapViewController.swift */,
 				4FEFDB622478D672003AFFF1 /* MapViewController.swift */,
 				4FEFDB642478D684003AFFF1 /* TableViewController.swift */,
 				4FA5DB91248D8F5C00CBFE60 /* AddLocationViewController.swift */,
@@ -243,7 +240,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FEFDB612478D62B003AFFF1 /* OnTheMapViewController.swift in Sources */,
 				4FCB72F2247AE9FF00320AC0 /* LoginRequest.swift in Sources */,
 				4F913E9C24946FC4004007A6 /* StudentLocationRequest.swift in Sources */,
 				4F892BF0247C82A700C0397B /* LocationTableViewCell.swift in Sources */,

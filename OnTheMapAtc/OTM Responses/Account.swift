@@ -6,13 +6,6 @@
 //  Copyright © 2020 andres tello campos. All rights reserved.
 //
 
-/*
- "account":{
-     "registered":true,
-     "key":"3903878747"
- }
-*/
-
 import Foundation
 
 struct Account: Codable {

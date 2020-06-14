@@ -12,6 +12,7 @@ import SafariServices
 class TableViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var locations = [StudentLocation]()
     
@@ -19,25 +20,33 @@ class TableViewController: UIViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
-     }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getStudentLocations()
-        
     }
     
     func getStudentLocations() {
+        self.activityIndicator.startAnimating()
         OTMClient.getStudentLocations(limit: 100, skip: 0) { (locations, error) in
-            self.locations = locations ?? []
-            self.tableView.reloadData()
+            if error != nil {
+                self.activityIndicator.stopAnimating()
+                self.showAlertMessage(message: "Error loading student locations.")
+            } else {
+                self.locations = locations ?? []
+                self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
+            }
         }
     }
     
     @IBAction func logout(_ sender: Any) {
+        self.activityIndicator.startAnimating()
         OTMClient.logout { (success, error) in
             if success {
                 DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
@@ -50,7 +59,6 @@ class TableViewController: UIViewController {
         self.getStudentLocations()
     }
     
-    
     @IBAction func addPin(_ sender: Any) {
         performSegue(withIdentifier: "showLocationForm", sender: nil)
     }
@@ -58,7 +66,6 @@ class TableViewController: UIViewController {
     func showAlertMessage(message: String) {
         let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        
         self.present(alertVC, animated: true, completion: nil)
     }
 }
@@ -74,7 +81,6 @@ extension TableViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableViewCell")
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableViewCell", for: indexPath) as! LocationTableViewCell
         
         let location = self.locations[indexPath.row]
