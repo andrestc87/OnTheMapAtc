@@ -12,11 +12,10 @@ import SafariServices
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
-    
     @IBOutlet weak var mapView: MKMapView!
-    
     @IBOutlet weak var mapLogOutButton: UIBarButtonItem!
     @IBOutlet weak var addLocationButton: UIBarButtonItem!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var refreshMapButton: UIBarButtonItem!
     
     var locations = [StudentLocation]()
@@ -30,16 +29,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getStudentLocations()
-        
     }
     
     @IBAction func logout(_ sender: Any) {
+        self.activityIndicator.startAnimating()
         OTMClient.logout { (success, error) in
             if success {
                 DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
                     self.dismiss(animated: true, completion: nil)
                 }
             } else {
+                self.activityIndicator.stopAnimating()
                 self.showAlertMessage(message: "An error occurred logging out.")
             }
         }
@@ -49,15 +50,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.getStudentLocations()
     }
     
-    
     @IBAction func addPin(_ sender: Any) {
         performSegue(withIdentifier: "showLocationForm", sender: nil)
     }
     
     func getStudentLocations() {
+        self.activityIndicator.startAnimating()
         OTMClient.getStudentLocations(limit: 100, skip: 0) { (locations, error) in
-            self.locations = locations ?? []
-            self.addMapPins(locations: self.locations)
+            if error != nil {
+                self.activityIndicator.stopAnimating()
+                self.showAlertMessage(message: "Error loading student locations.")
+            } else {
+                self.locations = locations ?? []
+                self.addMapPins(locations: self.locations)
+            }
         }
     }
     
@@ -87,6 +93,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if firstPin != nil {
                 self.setMapRegionForItem(pin: firstPin!)
             }
+            self.activityIndicator.stopAnimating()
         }
     }
     

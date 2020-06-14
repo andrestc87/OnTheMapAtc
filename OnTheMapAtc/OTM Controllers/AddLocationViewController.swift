@@ -13,12 +13,13 @@ class AddLocationViewController: UIViewController {
     
     @IBOutlet weak var locationTextField: LoginTextField!
     @IBOutlet weak var linkTextField: LoginTextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var findLocationButton: LoginButton!
     
     var locationPlaceMark: CLPlacemark!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -36,15 +37,16 @@ class AddLocationViewController: UIViewController {
         if locationTextField.text?.count == 0 || linkTextField.text?.count == 0 {
             showAlertMessage(message: "Please, insert a location and a link.")
         } else {
+            self.setLoggingIn(true)
             CLGeocoder().geocodeAddressString(locationTextField.text!){ (placemark, error) in
                 guard error == nil else {
+                    self.setLoggingIn(false)
                     self.showAlertMessage(message: "The location was not found.")
                     return
                 }
-                print("HABEMUS PLACEMARK")
-                
                 self.locationPlaceMark = placemark?[0]
                 self.performSegue(withIdentifier: "showFindLocation", sender: nil)
+                self.setLoggingIn(false)
             }
         }
     }
@@ -54,5 +56,16 @@ class AddLocationViewController: UIViewController {
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    func setLoggingIn(_ loggingIn: Bool) {
+        if loggingIn {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        locationTextField.isEnabled = !loggingIn
+        linkTextField.isEnabled = !loggingIn
+        findLocationButton.isEnabled = !loggingIn
     }
 }
